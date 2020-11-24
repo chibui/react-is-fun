@@ -1,23 +1,14 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 
-const style = {
-    backgroundColor: 'orange',
-    color: 'white',
-    fontFamily: 'Arial'
-}
+class Message extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1>Hello Everyone</h1>
+            </div>
+        )
+    }
+};
 
-const title = React.createElement(
-    'h1',
-    {
-        id: 'title', 
-        className: 'header',
-        style: style
-    },
-    'Hello World'
-)
-
-ReactDom.render(
-    title,
-    document.getElementById('root')
-)
+ReactDom.render(<Message />, document.getElementById('root'));
