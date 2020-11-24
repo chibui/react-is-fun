@@ -1,17 +1,23 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ReactDom from 'react-dom';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const style = {
+    backgroundColor: 'orange',
+    color: 'white',
+    fontFamily: 'Arial'
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const title = React.createElement(
+    'h1',
+    {
+        id: 'title', 
+        className: 'header',
+        style: style
+    },
+    'Hello World'
+)
+
+ReactDom.render(
+    title,
+    document.getElementById('root')
+)
