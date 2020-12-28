@@ -33,12 +33,20 @@ const NotHiring = () =>
     </div>
 
 class Library extends React.Component {
-
+    // from react 16.8 function components can handle state.
     state = { 
         open: true,
         freeBookmark: false,
         hiring: true
     };
+    
+    componentDidMount() {
+		console.log("The component is now mounted!")
+	}
+
+	componentDidUpdate() {
+		console.log("The component just updated")
+    }
     
     toggleOpenClosed = () => {
         this.setState(prevState => ({
