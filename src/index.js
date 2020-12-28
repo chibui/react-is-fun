@@ -35,13 +35,19 @@ const NotHiring = () =>
 class Library extends React.Component {
     // from react 16.8 function components can handle state.
     state = { 
-        open: true,
+        data: [],
         freeBookmark: false,
-        hiring: true
+        hiring: true,
+        loading: false,
+        open: true
     };
     
     componentDidMount() {
-		console.log("The component is now mounted!")
+        this.setState({loading:true});
+
+        fetch('https://hplussport.com/api/products/order/price/sort/asc/qty/1')
+            .then(data => data.json())
+            .then(data => this.setState({data, loading: false}));
 	}
 
 	componentDidUpdate() {
@@ -60,6 +66,18 @@ class Library extends React.Component {
         return (
             <div>
                 { this.state.hiring ? <Hiring /> : <NotHiring /> }
+                { this.state.loading 
+                    ? 'loading...'
+                    : <div>
+                        { this.state.data.map(product => 
+                            <div>
+                                <h3>Library Product of the Week!</h3>
+                                <h4>{ product.name }</h4>
+                                <img src={ product.image } height={ 100 }/>
+                            </div>    
+                        )}
+                    </div>
+                }
                 <h1>The Library is { this.state.open ? 'open' : 'closed'}</h1>
 
                 <button onClick={this.toggleOpenClosed}>Change</button>
