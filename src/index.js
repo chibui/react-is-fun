@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
+import PropTypes from 'prop-types';
 
 let BookList = [
     { title: "Hunger" },
@@ -7,6 +8,7 @@ let BookList = [
     { author: "Zadie Smith", pages: 480, title: "White Teech"},
     { author: "Kurt Vonnegut", pages: 304, title: "Cat's Cradle"}
 ]
+// let BookList = {};
 
 const Book = ({author="Unknown author", freeBookmark, pages="Unknown", title="No title provided"}) => {
     return (
@@ -130,6 +132,17 @@ class Library extends React.Component {
 //         )
 //     }
 // }
+
+Library.propTypes = {
+    books: PropTypes.array
+}
+
+Book.propTypes = {
+    author: PropTypes.string,
+    freeBookmark: PropTypes.bool,
+    pages: PropTypes.number,
+    title: PropTypes.string
+}
 
 render(
     <Library books={ BookList }/>, 
